@@ -8,7 +8,7 @@ It provides REST-like APIs for air quality monitoring, allowing users to:
 ## Team Members
 - **Project Manager**: Abaya
 - **Data Handler**: Damoking
-- **API Developer**: Member 3
+- **API Developer**: Marquez 
 - **Logger Specialist**: Member 4
 - **Data Analyst**: Ayap
 - **QA Lead**: Member 6
