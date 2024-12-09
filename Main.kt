@@ -1,20 +1,31 @@
-
+	/**
+ * Main function for the air quality monitoring system.
+ */
 fun main() {
     println("Enter pollutant levels (CO, NO2, PM2.5):")
-    val CO = readLine()!!.toDouble() 
+
+    // User inputs
+    val co = readLine()!!.toDouble()
     val no2 = readLine()!!.toDouble()
-    val PM25 = readLine()!!.toDouble()
+    val pm25 = readLine()!!.toDouble()
 
-    val data = pollutant_data(CO, no2, PM25)
+    // Create pollutant data instance
+    val data = PollutantData(co, no2, pm25)
 
-    val evaluator = air_quality_evaluator()
-    val aqi = evaluator.CalculateAQI(data)
-    val status = evaluator.EvaluateAirQuality(data)
+    // Instantiate evaluator and generate results
+    val evaluator = AirQualityEvaluator()
+    val aqi = evaluator.calculateAQI(data)
+    val status = evaluator.evaluate(data)
+    val alerts = checkThresholds(data)
 
-    val alerts = CheckThresholds(data)
-
+    // Display results
     println("Air Quality Index (AQI): $aqi")
     println("Air Quality Status: $status")
-    println("Threshold Alerts:")
-    for (alert in alerts) println(alert) 
+    if (alerts.isNotEmpty()) {
+        println("Threshold Alerts:")
+        alerts.forEach { println("- $it") }
+    } else {
+        println("No threshold alerts.")
+    }
+}
 
